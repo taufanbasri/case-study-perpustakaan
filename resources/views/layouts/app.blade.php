@@ -10,15 +10,6 @@
 
     <title>{{ config('app.name', 'Perpustakaan') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/jquery-3.2.1.min.js') }}" defer></script>
-    <script src="{{ asset('js/popper.min.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-
-    <!-- Datatables -->
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}" defer></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -45,8 +36,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    <ul class="navbar-nav">
+                        @if (auth()->check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">Beranda</a>
+                            </li>
+                            @role('admin')
+                              <li class="nav-item">
+                                <a class="nav-link" href="{{ route('authors.index') }}">Penulis</a>
+                              </li>
+                            @endrole
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -84,6 +84,14 @@
         </main>
     </div>
 
-    @yield('scripts')
+    <!-- Scripts -->
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- Datatables -->
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    @stack('scripts')
 </body>
 </html>
