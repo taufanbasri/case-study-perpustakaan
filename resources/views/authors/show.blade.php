@@ -12,18 +12,14 @@
           <li class="breadcrumb-item">
             <a href="{{ route('authors.index') }}">Penulis</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Tambah Penulis</li>
+          <li class="breadcrumb-item active" aria-current="page">Data Penulis</li>
         </ol>
       </nav>
       <div class="card">
-        <div class="card-header">Tambah Penulis</div>
+        <div class="card-header">Data Penulis</div>
 
         <div class="card-body">
-          <form class="form-inline" action="{{ route('authors.store') }}" method="post">
-            @csrf
-
-            @include('authors._form')
-          </form>
+          Nama: <strong>{{ $author->name }}</strong>
         </div>
       </div>
     </div>
