@@ -19,13 +19,18 @@
         <div class="card-header">Tambah Penulis</div>
 
         <div class="card-body">
-          <form class="form-horizontal" action="{{ route('authors.store') }}" method="post">
+          <form class="form-inline" action="{{ route('authors.store') }}" method="post">
             @csrf
 
             <div class="form-group">
               <label for="name" class="col-md-2 control-label">Nama</label>
-              <div class="col-md-4">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nama Penulis">
+              <div class="col-md-10">
+                <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" placeholder="Nama Penulis" value="{{ old('name') }}" autofocus>
+                @if ($errors->has('name'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
               </div>
             </div>
 
