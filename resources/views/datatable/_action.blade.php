@@ -1,4 +1,4 @@
-<form class="float-right js-confirm" action="{{ route('authors.destroy', $author_id) }}" method="post" data-confirm="{{ $confirm_message }}">
+<form class="float-right js-confirm" action="{{ $delete_url }}" method="post" data-confirm="{{ $confirm_message }}">
   @csrf
   @method('DELETE')
 
