@@ -22,6 +22,8 @@
     <!-- Datatables Style -->
     <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/selectize.bootstrap4.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -97,6 +99,7 @@
     <!-- Datatables -->
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/selectize.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     @stack('scripts')
 </body>

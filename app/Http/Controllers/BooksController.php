@@ -169,6 +169,22 @@ class BooksController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        if ($book->cover) {
+            $old_image = $book->cover;
+            $filePath = public_path() . DIRECTORY_SEPARATOR . 'cover' . DIRECTORY_SEPARATOR . $book->cover;
+
+            try {
+                File::delete($filePath);
+            } catch (FileNotFoundException $e) {
+
+            }
+        }
+
+        $book->delete();
+
+        return redirect()->route('books.index')->with('flash_notification', [
+            'level' => 'danger',
+            'message' => "Berhasil menghapus buku dengan judul $book->title"
+        ]);
     }
 }
