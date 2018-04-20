@@ -37,7 +37,7 @@
             <div class="form-group form-inline">
               <label class="col-2 control-label">Penulis</label>
               <div class="col-10">
-                <select class="form-control {{ $errors->has('amount') ? ' is-invalid' : '' }}" name="author_id">
+                <select class="form-control {{ $errors->has('author_id') ? ' is-invalid' : '' }}" name="author_id">
                   <option>--Pilih Penulis--</option>
                   @foreach ($authors as $author)
                     <option value="{{ $author->id }}">{{ $author->name }}</option>
