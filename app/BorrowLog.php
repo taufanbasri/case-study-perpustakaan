@@ -23,4 +23,14 @@ class BorrowLog extends Model
     {
       return $this->belongsTo(User::class);
     }
+
+    public function scopeReturned($query)
+    {
+        return $query->where('is_returned', 1);
+    }
+
+    public function scopeBorrowed($query)
+    {
+        return $query->where('is_returned', 0);
+    }
 }
