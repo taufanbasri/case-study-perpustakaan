@@ -10,6 +10,10 @@ class BorrowLog extends Model
         'book_id', 'user_id', 'is_returned'
     ];
 
+    protected $casts = [
+        'is_returned' => 'boolean'
+    ];
+
     public function book()
     {
       return $this->belongsTo(Book::class);
