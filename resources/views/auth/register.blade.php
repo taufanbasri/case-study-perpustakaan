@@ -61,6 +61,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+
+                            <div class="col-md-6">
+                              <div class="captcha">
+                                <span>{!! captcha_img() !!}</span>
+                                <button type="button" class="btn btn-success btn-refresh"><i class="fa fa-refresh"></i></button>
+                              </div>
+                              <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                              @if ($errors->has('captcha'))
+                                <span class="help-block">
+                                  <strong>{{ $errors->first('captcha') }}</strong>
+                                </span>
+                              @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -75,3 +92,17 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+  <script type="text/javascript">
+    $(".btn-refresh").click(function(){
+      $.ajax({
+        type:'GET',
+        url:'/refresh-captcha',
+        success:function(data){
+          $(".captcha span").html(data.captcha);
+        }
+      });
+    });
+    </script>
+@endpush
