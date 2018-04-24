@@ -180,7 +180,13 @@ class BooksController extends Controller
      */
     public function destroy(Book $book)
     {
-        if ($book->cover) {
+        $cover = $book->cover;
+
+        if (!$book->delete()) {
+            return redirect()->back();
+        }
+
+        if ($cover) {
             $old_image = $book->cover;
             $filePath = public_path() . DIRECTORY_SEPARATOR . 'cover' . DIRECTORY_SEPARATOR . $book->cover;
 
@@ -190,8 +196,6 @@ class BooksController extends Controller
 
             }
         }
-
-        $book->delete();
 
         return redirect()->route('books.index')->with('flash_notification', [
             'level' => 'danger',
