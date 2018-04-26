@@ -41,6 +41,10 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'user-should-verified' => [
+            \App\Http\Middleware\UserShouldVerified::class,
+        ],
     ];
 
     /**
