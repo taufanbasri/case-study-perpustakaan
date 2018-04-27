@@ -51,6 +51,9 @@
                                 <a class="nav-link" href="{{ route('books.index') }}">Buku</a>
                               </li>
                             @endrole
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+                            </li>
                         @endif
                     </ul>
 
