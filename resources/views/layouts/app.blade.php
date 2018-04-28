@@ -50,6 +50,9 @@
                               <li class="nav-item">
                                 <a class="nav-link" href="{{ route('books.index') }}">Buku</a>
                               </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="{{ route('members.index') }}">Member</a>
+                              </li>
                             @endrole
                             <li class="nav-item">
                               <a class="nav-link" href="{{ route('profile') }}">Profile</a>

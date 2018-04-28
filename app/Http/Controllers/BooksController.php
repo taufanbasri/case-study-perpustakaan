@@ -33,21 +33,22 @@ class BooksController extends Controller
             $books = Book::with('author')->get();
 
             return Datatables::of($books)
-                    ->addColumn('action', function ($book) {
+                    ->addColumn('aksi', function ($book) {
                         return view('datatable._action', [
                             'show_url' => route('books.show', $book->id),
                             'edit_url' => route('books.edit', $book->id),
                             'delete_url' => route('books.destroy', $book->id),
                             'confirm_message' => 'Yakin akan menghapus ' . $book->name
                         ]);
-                    })->toJson();
+                    })->rawColumns(['aksi'])
+                    ->toJson();
         }
 
         $html = $builder->columns([
             ['data' => 'title', 'name' => 'title', 'title' => 'Judul Buku'],
             ['data' => 'amount', 'name' => 'amount', 'title' => 'Jumlah Buku'],
             ['data' => 'author.name', 'name' => 'author.name', 'title' => 'Penulis'],
-            ['data' => 'action', 'name' => 'action', 'title' => '', 'orderable' => false, 'searchable' => false],
+            ['data' => 'aksi', 'name' => 'aksi', 'title' => '', 'orderable' => false, 'searchable' => false],
         ]);
 
         return view('books.index', compact('html'));
