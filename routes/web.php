@@ -41,4 +41,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('authors', 'AuthorsController');
     Route::resource('books', 'BooksController');
     Route::resource('members', 'MembersController');
+    Route::get('statistics', 'StatisticsController@index')->name('statistics.index');
 });
