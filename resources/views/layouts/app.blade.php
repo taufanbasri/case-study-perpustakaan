@@ -40,24 +40,24 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav">
                         @if (auth()->check())
-                            <li class="nav-item">
+                            <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('home') }}">Beranda</a>
                             </li>
                             @role('admin')
-                              <li class="nav-item">
+                              <li class="nav-item {{ Route::is('authors.index') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('authors.index') }}">Penulis</a>
                               </li>
-                              <li class="nav-item">
+                              <li class="nav-item {{ Route::is('books.index') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('books.index') }}">Buku</a>
                               </li>
-                              <li class="nav-item">
+                              <li class="nav-item {{ Route::is('members.index') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('members.index') }}">Member</a>
                               </li>
-                              <li class="nav-item">
+                              <li class="nav-item {{ Route::is('statistics.index') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('statistics.index') }}">Data Peminjaman</a>
                               </li>
                             @endrole
-                            <li class="nav-item">
+                            <li class="nav-item {{ Route::is('profile') ? 'active' : '' }}">
                               <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                             </li>
                         @endif
