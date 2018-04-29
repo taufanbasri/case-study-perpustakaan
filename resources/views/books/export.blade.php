@@ -19,7 +19,7 @@
         <div class="card-header">Export Buku</div>
 
         <div class="card-body">
-            <form class="" action="{{ route('export.books.post') }}" method="post" enctype="multipart/form-data">
+            <form class="" action="{{ route('export.books.post') }}" method="post" enctype="multipart/form-data"  target="_blank">
                 @csrf
 
                 <div class="form-group row">
@@ -39,6 +39,21 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label for="type" class="col-sm-4 col-form-label text-md-right">Pilih Output</label>
+                    <div class="col-md-6">
+                      <div class="radio {{ $errors->has('type') ? ' is-invalid' : '' }}">
+                        <label><input type="radio" name="type" value="xls">Excel</label>
+                        <label><input type="radio" name="type" value="pdf">PDF</label>
+                      </div>
+
+                        @if ($errors->has('type'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('type') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
                 <div class="form-group row">
                   <div class="col-md-4"></div>
                   <div class="col-md-6">
