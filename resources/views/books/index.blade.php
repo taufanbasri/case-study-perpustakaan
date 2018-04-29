@@ -15,6 +15,7 @@
           <div class="card">
               <div class="card-header">Buku
                 <a class="btn btn-primary pull-right" href="{{ route('books.create') }}">Tambah</a>
+                <a class="btn btn-success pull-right" href="{{ route('export.books.xls') }}">Export</a>
               </div>
 
               <div class="card-body">
